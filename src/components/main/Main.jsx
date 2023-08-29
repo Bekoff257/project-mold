@@ -19,7 +19,8 @@ const Main = () => {
   }, [])
 
   return (
-    <div className='home__product-carousel'>
+    <div className="container">
+      <div className='home__product-carousel'>
       {
         homeReeldata.slice(0, 4).map(category => 
           <Fragment key={uuidv4()}>
@@ -28,6 +29,7 @@ const Main = () => {
           </Fragment>
         )
       }
+    </div>
     </div>
   )
 }
