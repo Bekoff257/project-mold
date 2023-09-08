@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 
 function Req() {
   return (
-    <Fragment>
+    <>
         <div className="container">
         <div className={classes.reqs}>
             <h1>Биз мижозларга қуйидагиларни таклиф қиламиз</h1>
@@ -41,7 +41,7 @@ function Req() {
             </div>
         </div>
         </div>
-    </Fragment>
+    </>
   )
 }
 
