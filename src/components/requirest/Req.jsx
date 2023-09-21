@@ -1,13 +1,16 @@
 import React from 'react'
 import classes from "./Req.module.scss"
 import { Fragment } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function Req() {
+    const { t } = useTranslation()
+
   return (
     <>
         <div className="container">
         <div className={classes.reqs}>
-            <h1>Биз мижозларга қуйидагиларни таклиф қиламиз</h1>
+            <h1>{t("footertop.recomend")}</h1>
             <div className={classes.advice}>
                 <ul className={classes.advice_services}>
                     <li className={classes.service}>

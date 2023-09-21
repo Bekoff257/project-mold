@@ -113,18 +113,40 @@
     .searched_result{
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
-        p{
+       .sr_first{
+        display: flex;
+        align-items: center;
+        
+
+            p{
+                font-size: 17px;
+            }
+
+            span{
+                align-items: flex-start;
+                border-radius: 5px;
+                background: #e3e3e3;
+                padding: 7px 10px;
+                margin: 5px 0 5px 10px;
+            }
+       }
+
+       .sr_second{
+        display: flex;
+        align-items: center;
+
+        button{
+            background: none;
+            color: dodgerblue;
             font-size: 17px;
         }
 
-        span{
-            align-items: flex-start;
-            border-radius: 5px;
-            background: #e3e3e3;
-            padding: 7px 10px;
-            margin: 5px 0 5px 10px;
+        p{
+            font-size: 15px;
         }
+       }
     }
 
     img{
@@ -171,4 +193,11 @@
             font-size: 16px;
         }
     }
+}
+
+.notfound_img{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

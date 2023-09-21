@@ -31,15 +31,15 @@ const Sidebar = () => {
 
   return (
     <div className='sidebar' style={{ display: locationSidebar.pathname.includes('/product-view') ? 'none' : 'block' }}>
-        <p className='aside__header'><AiOutlineAppstore /> Category</p><ul className='category_main'>
-        {dataCategory?.mainCategory_ru?.map((mainCategory, inx) => <li key={uuidv4()} className='category_list'><Link to={`/maincategory/${mainCategory}}`}>{mainCategory}</Link> <IoIosArrowForward />
+        <p className='aside__header'><AiOutlineAppstore /> Category</p>
+        <ul className='category_main'>
+          {dataCategory.mainCategory_ru?.map((mainCategory, inx) => <li key={uuidv4()} className='category_list'><Link to={`/maincategory/${mainCategory}`}>{mainCategory}</Link> <IoIosArrowForward />
           <div className='sub-category'>
             {dataCategory.productSubCategories_ru[inx].map(subCategory =>
-              // eslint-disable-next-line react/jsx-no-undef
               subCategory ? <p><Link to={`/subcategory/${subCategory}`} key={uuidv4()}>{subCategory}</Link></p> : <React.Fragment key={uuidv4()}></React.Fragment>
             )}
           </div>
-        </li>
+        </li> 
         )}
       </ul>
     </div>

@@ -32,7 +32,7 @@ const ProductCarousel = ({categoryData}) => {
       }}
         slidesPerView={8}
         spaceBetween={10}
-        autoplay={{delay: 1000}}
+        autoplay={{delay: 2000}}
         loop={true}
         draggable={true}
         slidesPerGroup={1}
