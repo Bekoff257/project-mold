@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { instance } from '../api/axios'
@@ -6,9 +8,14 @@ import "./ProductView.scss"
 import { BiChevronRight } from "react-icons/bi"
 import { BsRecordCircle } from "react-icons/bs"
 import { AiOutlineShoppingCart } from "react-icons/ai"
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify'
+
 
 
 function ProductView() {
+    const dispatch = useDispatch()
+    const crLangForProductView = useSelector(state => state.language.lang)
     const [ selectedVariant, setSelectedVariant ] = useState(0)
     const [ itemCounter, setCounter ] = useState(1)
     const [ activeImageNumber, setActiveImage ] = useState(0)
@@ -20,8 +27,7 @@ function ProductView() {
             .then(response => setViewData(response.data))
             .catch(err => console.log(err))
     }, [productDataURL.id])
-    console.log(activeImageNumber);
-    console.log(dataProductView);
+
 
     function decrement (){
         if(itemCounter > 1){
@@ -37,7 +43,15 @@ function ProductView() {
         console.log(+dataProductView?.singleProduct[0].productSizesAndQuantity[selectedVariant].quantity)
     }
 
-    console.log(selectedVariant);
+    function addToCart(product){
+        const {productSizesAndQuantity, ...rest} = product;
+        rest.selectedType = productSizesAndQuantity[selectedVariant]
+        rest.count = itemCounter
+        rest.totalPrice = dataProductView.singleProduct[0].productSizesAndQuantity[selectedVariant].price * itemCounter
+        dispatch({product: rest, type: 'ADD_TO_CART'})
+        toast.success('Маҳсулот саватга қўшилди!')
+    }
+
   return (
         <div className="container">
             <div className='product-view'>
@@ -56,18 +70,24 @@ function ProductView() {
                                 </div>
                             </div>
                             <div className='productView_right'>
-                                <h1>{viewProduct.productName_uz}</h1>
-                                <div className="path_way"><p>{viewProduct.productMainCategory_uz}</p> <BiChevronRight /> <p>{viewProduct.productSubCategory_uz}</p></div>
+                                <h1>{ crLangForProductView == 'uz' ? viewProduct.productName_uz : viewProduct.productName_ru}</h1>
+                                <div className="path_way"><p>{ crLangForProductView === 'uz' ? viewProduct.productMainCategory_uz : viewProduct.productMainCategory_ru }</p> <BiChevronRight /> <p>{ crLangForProductView === 'uz' ? viewProduct.productSubCategory_uz :  viewProduct.productSubCategory_uz}</p></div>
                                 <div className="countOfProduct">
                                     <div className="sizeOf_Product">
                                         <span>Омборда: <h5 className='productCount'>{viewProduct.productSizesAndQuantity[selectedVariant].quantity}</h5></span>
-                                        <h2 className='price'>33 0000 <h4 className='sum'>CУМ</h4></h2>
+                                        <h2 className='price'>{viewProduct.productSizesAndQuantity[selectedVariant].price} <h4 className='sum'>CУМ</h4></h2>
                                         <div className="pathWay_info">
                                             {/* <BsRecordCircle /> <p className='info_category'></p> */}
                                             <ul className='info_main'>
-                                            {viewProduct.productDescription_ru.map(info => 
+                                            { crLangForProductView == 'uz' ?
+                                                viewProduct.productDescription_uz.map(info => 
                                                 <li><BsRecordCircle />{info}</li>
-                                            )}
+                                                )
+                                                :
+                                                viewProduct.productDescription_ru.map(info => 
+                                                    <li><BsRecordCircle />{info}</li>
+                                                    )
+                                            }
                                             </ul>
                                         </div>
                                     </div>
@@ -101,7 +121,7 @@ function ProductView() {
                                             <button className='price_num'>{itemCounter * +dataProductView?.singleProduct[0].productSizesAndQuantity[selectedVariant].price}</button>
                                         </div>              
                                     <div className="main_bottom">
-                                     <button className='cardshop_btn'><AiOutlineShoppingCart /> Саватга қўшиш</button>
+                                     <button  onClick={() => addToCart(viewProduct)} className='cardshop_btn'><AiOutlineShoppingCart /> Саватга қўшиш</button>
                                     </div> 
                                 </div>
                             </div>

@@ -10,13 +10,17 @@ import ProductView from "./product-view/ProductView";
 import ScrollTop from "./components/scrolltotop/ScrollTop";
 import MainCategory from "./routes/main-category/MainCategory"
 import SubCategory from "./components/subcategory/SubCategory";
+import Cart from "./components/cart/Cart";
+import { ToastContainer } from 'react-toastify';
+import "./App.scss"
 
 function App() {
   return (
-    <>
-    <ScrollTop/>
+    <div className="app">
+      <ScrollTop/>
       <Nav />
       <SearchNav />
+      <Cart />
       <Routes>
         <Route path="/" element={<Home/>} /> 
         <Route path="/about" element={<About/>} /> 
@@ -27,7 +31,8 @@ function App() {
       </Routes>
       <Req />
       <Footer/>
-    </>
+      <ToastContainer />
+    </div>
   );
 }
 

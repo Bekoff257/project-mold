@@ -1,11 +1,5 @@
 .app{
-  width: 200px;
-  height: 200px;
-  background-color: red;
-}
-
-.box{
-  width: 100px;
-  height: 100px;
-  background-color: green;
+  // width: 100vw;
+  overflow-x: hidden;
+  position: relative;
 }

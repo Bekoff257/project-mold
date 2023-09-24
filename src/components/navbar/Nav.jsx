@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { MdMailOutline } from "react-icons/md"
 import { BiPhoneCall } from "react-icons/bi";
 import flaguz from "../../assests/flaguz.svg"
@@ -9,18 +10,21 @@ import "./Nav.scss";
 import { useTranslation } from 'react-i18next';
 
 function Nav() {
+  const dispatch = useDispatch()
   const { t } = useTranslation()
-  const [ languageChanger, setChanger ] = useState(flagru)
+  const [ languageState, setLangugageState ] = useState(localStorage.getItem('lang') || 'uz')
 
   function changeLang (selectedLang){
     i18n.changeLanguage(selectedLang)
+    setLangugageState(selectedLang)
+    dispatch({language_code: selectedLang, type: 'CHANGE_LANGUAGE'})
   }
 
   return (
     <div className='navbar'>
         <div className="language_select">
-           <img src={flaguz} alt="UZ" onClick={() => changeLang('uz')}/>
-            <img  src={flagru} alt="RU" onClick={() => changeLang('ru')}/>
+           <img src={flaguz} alt="UZ" style={ languageState === "uz" ? {borderBottom: '3px solid dodgerblue'} : null }  onClick={() => changeLang('uz')}/>
+            <img  src={flagru} alt="RU" style={ languageState === "ru" ? {borderBottom: '3px solid dodgerblue'} : null } onClick={() => changeLang('ru')}/>
         </div>
         <div className="contact">
             <div className="callphone">
