@@ -1,3 +1,5 @@
+
+
 .navbar{
     display: flex;
     justify-content: flex-end;
@@ -53,4 +55,26 @@
 
 .active{
     border-bottom: 4px solid #4361ee;
+}
+
+@media only screen and (max-width: 460px){
+    // .nav_wrap{
+    //     padding: 0 20px;
+    //     position: fixed;
+    //     background: #fff;
+    //     border-bottom: 1px solid dodgerblue;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     z-index: 3;
+    // }
+
+    .navbar{
+        flex-direction: column;
+        padding: 10px;
+
+        .contact{
+            display: none;
+        }
+    }
 }

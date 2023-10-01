@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { instance } from '../../api/axios';
 import { useEffect, useState } from 'react';
 import ProductCard from '../../components/product-card/ProductCard';
+import "./MainCategory.scss"
 
 function MainCategory() {
     const currentLang = useSelector(state => state.lang)
@@ -21,15 +22,18 @@ function MainCategory() {
         .catch(err => console.log(err))
     }, [categoryname])
 
-    console.log(maincategoryData);
 
   return (
-    <div className='mainCategory'>
+    <div className="container">
+        <div className='mainCategory'>
+        <div className="category_wrap">
         {
             maincategoryData?.maincategory.map(categoryItem => 
                 <ProductCard productData={categoryItem}/>          
             )
         }
+        </div>
+    </div>
     </div>
   )
 }

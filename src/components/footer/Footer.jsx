@@ -5,10 +5,16 @@ import { MdMailOutline } from "react-icons/md"
 import { SlLocationPin } from "react-icons/sl"
 import { FaTelegramPlane, FaFacebook, FaYoutube } from "react-icons/fa"
 import logo from "../../assests/logo.svg"
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+const exceptionalRoutes = ["/login", "/admin"]
+
 
 function Footer() {
-  return (
+    const footerLocation = useLocation()
+    const { t } = useTranslation()
+  return !exceptionalRoutes.includes(footerLocation.pathname) ?  (
     <div className='Footer'>
         <div className="about_us">
             <ul className='about_main'>
@@ -97,7 +103,7 @@ function Footer() {
             </div>
         </div>
     </div>
-  )
+  ) : <></>
 }
 
 export default Footer

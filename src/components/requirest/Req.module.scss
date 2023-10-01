@@ -24,6 +24,7 @@
             .service{
                 display: flex;
                 align-items: center;
+                gap: 40px;
 
                 .about_service{
                     display: flex;
@@ -35,16 +36,17 @@
                     }
 
                     .advice_small{
+                        text-align: center;
                         padding: 20px 0;
                         color: grey;
                     }
                 }
                 
-                .borderR{
-                    border: 1px solid lightgray;
-                    margin: 0 60px;
-                    height: 70px;
-                }
+                // .borderR{
+                //     border: 1px solid lightgray;
+                //     margin: 0 60px;
+                //     height: 70px;
+                // }
             }
         }
     }
@@ -61,9 +63,5 @@
     .about_service{
 
 
-    }
-
-    .borderR{
-        display: none;
     }
 }

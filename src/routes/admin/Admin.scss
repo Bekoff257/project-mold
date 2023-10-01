@@ -1,0 +1,118 @@
+.admin{
+
+    .admin_sidebar{
+        position: fixed;
+        background-color: dodgerblue;
+        border-radius: 15px;
+        padding: 0 15px;
+        height: 90vh;
+        min-width: 286px;
+        width: 286px;
+        min-height: 700px;
+
+        .left_sidebar{
+            // padding: 0 15px;
+            // height: 90vh;
+            // min-width: 286px;
+            // width: 286px;
+            // min-height: 700px;
+            
+            .logo{
+                margin: 40px auto 40px 19%;
+                width: 60%;
+            }
+        }
+    }
+}
+
+
+.language_section{
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    height: 55px;
+    justify-content: space-evenly;
+    margin: auto auto 20px;
+    width: 70%;
+
+    .img_la{
+        cursor: pointer;
+        width: 18%;
+    }
+}
+
+.admin_info{
+    align-items: center;
+    background: linear-gradient(180deg,#dfdfdf,rgba(4,4,4,.77));
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    font-size: 32px;
+    height: 55px;
+    justify-content: center;
+    min-height: 55px;
+    min-width: 55px;
+    width: 55px;
+
+    svg{
+        font-size: 30px;
+        color: #fff;
+    }
+
+}
+
+.admin_profile{
+    background: #fff;
+    border-radius: 10px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+
+    .id_admin{
+        
+        h3{
+            font-size: 15px;
+            margin-left: 10px;
+            padding-top: 3px;
+            color: dodgerblue;
+        }
+    
+        p{
+            font-size: 15px;
+            font-weight: 600;
+            margin-left: 10px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.bottom_sidebar{
+
+    .links_menu{
+
+        .links_item{
+            margin-top: 30px;
+            
+            a{
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #fff;
+
+                svg{
+                    font-size: 30px;
+                }
+
+                p{
+                    font-weight: 600;
+                    margin-left: 12px;
+                }
+            }
+        }
+    }
+}
+
+.active{
+    background: #fff;
+}

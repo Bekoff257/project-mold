@@ -6,8 +6,15 @@ import { BiChevronRight } from 'react-icons/bi';
 import { PiShoppingCart } from 'react-icons/pi';
 import { LiaTimesSolid } from 'react-icons/lia';
 import notfoundbox from '../../assests/notfoundbox.png';
+import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
+
+const exceptionalRoutes = ["/product-view", "/login", "/admin"]
+
 
 function Cart() {
+  const cartLocation = useLocation()
+  const { t } = useTranslation()
   const isCartHere = useSelector((state) => state.carts.cartProducts);
   const [itemCounter, setCounter] = useState(1);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -24,7 +31,7 @@ function Cart() {
     setIsCartOpen(!isCartOpen);
   };
 
-  return (
+  return !exceptionalRoutes.includes(cartLocation.pathname) ?  (
     <div className={`big_wrapper ${isCartOpen ? 'bg' : ''}`}>
       <div className={`cart ${isCartOpen ? 'cart--active' : ''}`}>
         <button style={{ display: isCartOpen ? 'block' : 'none' }} onClick={toggleCart} className="cart--closer">
@@ -41,9 +48,9 @@ function Cart() {
         >
           {isCartHere.length === 0 ? (
             <div className="error_found">
-              <h2>Сават бўш</h2>
+              <h2>{t('cartOpen.emptycart')}</h2>
               <img src={notfoundbox} alt="" />
-              <button onClick={toggleCart}>Харид қилиш</button>
+              <button onClick={toggleCart}>{t('cartOpen.shopping')}</button>
             </div>
           ) : (
             isCartHere.map((item, indx) => (
@@ -72,7 +79,7 @@ function Cart() {
         </div>
       </div>
     </div>
-  );
+  ) : <></> ;
 }
 
 export default Cart;

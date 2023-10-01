@@ -2,11 +2,16 @@ import React from 'react'
 import classes from "./Req.module.scss"
 import { Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
+
+const exceptionalRoutes = ["/login", "/admin"]
+
 
 function Req() {
+    const reqLocation = useLocation()
     const { t } = useTranslation()
 
-  return (
+    return !exceptionalRoutes.includes(reqLocation.pathname) ? (
     <>
         <div className="container">
         <div className={classes.reqs}>
@@ -15,29 +20,29 @@ function Req() {
                 <ul className={classes.advice_services}>
                     <li className={classes.service}>
                         <div className={classes.about_service}>
-                            <p>Бўлиб-бўлиб сотиб олиш</p>
-                            <span className={classes.advice_small}>MOLD-COMPONENTS да ишлаб чиқариш учун <br /> қулай онлайн буюртмалар режаси</span>
+                            <p>{t('req.res')}</p>
+                            <span className={classes.advice_small}>{t('req.res_desc')}</span>
                         </div>
                         <div className={classes.borderR}></div>
                     </li>
                     <li className={classes.service}>
                         <div className={classes.about_service}>
-                            <p>Йетказиб бериш бепул</p>
-                            <span className={classes.advice_small}>Сифатли маҳсулотлар ва хизматлар</span>
+                            <p>{t('req.delivery')}</p>
+                            <span className={classes.advice_small}>{t('req.best_quality')}</span>
                         </div>
                         <div className={classes.borderR}></div>
                     </li>
                     <li className={classes.service}>
                         <div className={classes.about_service}>
-                            <p>Бонус тизими</p>
-                            <span className={classes.advice_small}>MOLD-COMPONENTS да ишлаб чиқариш учун <br /> қулай онлайн буюртмалар режаси</span>
+                            <p>{t('req.bonus')}</p>
+                            <span className={classes.advice_small}>{t('req.made_1')} <br /> {t('req.made_2')}</span>
                         </div>
                         <div className={classes.borderR}></div>
                     </li>
                     <li className={classes.service}>
                         <div className={classes.about_service}>
-                            <p>Ёрдам!</p>
-                            <span className={classes.advice_small}>TSS</span>
+                            <p>{t('req.help')}</p>
+                            <span className={classes.advice_small}>{t('req.tss')}</span>
                         </div>
                     </li>
                 </ul>
@@ -45,7 +50,7 @@ function Req() {
         </div>
         </div>
     </>
-  )
+  ) : <></>
 }
 
 export default Req

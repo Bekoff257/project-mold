@@ -19,14 +19,17 @@ function SubCategory() {
 
     }, [subcategoryname])
 
-    console.log(subcategory);
   return (
-    <div className='subcategory'>
+    <div className="container">
+        <div className='subcategory'>
+        <div className="sub_wrap">
         {
             subcategory?.subCategory.map(itm => 
                 <ProductCard productData={itm}/>    
             )
         }
+        </div>
+    </div>
     </div>
   )
 }

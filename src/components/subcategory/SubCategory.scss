@@ -1,0 +1,11 @@
+.subcategory{
+    display: flex;
+    justify-content: center;
+}
+
+.sub_wrap{
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 20px;
+    margin-left: 20%;
+}

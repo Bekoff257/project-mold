@@ -10,23 +10,25 @@ import { BsRecordCircle } from "react-icons/bs"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify'
+import { useTranslation } from 'react-i18next'
 
 
 
 function ProductView() {
+    const { t } = useTranslation()
     const dispatch = useDispatch()
     const crLangForProductView = useSelector(state => state.language.lang)
     const [ selectedVariant, setSelectedVariant ] = useState(0)
     const [ itemCounter, setCounter ] = useState(1)
     const [ activeImageNumber, setActiveImage ] = useState(0)
     const [ dataProductView, setViewData ] = useState([])
-    let productDataURL = useParams()
+    let { id } = useParams()
     
     useEffect(() => {
-        instance(`/product/single-product/${productDataURL.id}`)
+        instance(`/product/single-product/${id}`)
             .then(response => setViewData(response.data))
             .catch(err => console.log(err))
-    }, [productDataURL.id])
+    }, [id])
 
 
     function decrement (){
@@ -39,8 +41,8 @@ function ProductView() {
         if(itemCounter < +dataProductView?.singleProduct[0].productSizesAndQuantity[selectedVariant].quantity){
             setCounter(itemCounter + 1)
         }
-        console.log(dataProductView?.singleProduct[0])
-        console.log(+dataProductView?.singleProduct[0].productSizesAndQuantity[selectedVariant].quantity)
+        // console.log(dataProductView?.singleProduct[0])
+        // console.log(+dataProductView?.singleProduct[0].productSizesAndQuantity[selectedVariant].quantity)
     }
 
     function addToCart(product){
@@ -49,7 +51,7 @@ function ProductView() {
         rest.count = itemCounter
         rest.totalPrice = dataProductView.singleProduct[0].productSizesAndQuantity[selectedVariant].price * itemCounter
         dispatch({product: rest, type: 'ADD_TO_CART'})
-        toast.success('Маҳсулот саватга қўшилди!')
+        toast.success(t('addedCart.added'))
     }
 
   return (
@@ -74,7 +76,7 @@ function ProductView() {
                                 <div className="path_way"><p>{ crLangForProductView === 'uz' ? viewProduct.productMainCategory_uz : viewProduct.productMainCategory_ru }</p> <BiChevronRight /> <p>{ crLangForProductView === 'uz' ? viewProduct.productSubCategory_uz :  viewProduct.productSubCategory_uz}</p></div>
                                 <div className="countOfProduct">
                                     <div className="sizeOf_Product">
-                                        <span>Омборда: <h5 className='productCount'>{viewProduct.productSizesAndQuantity[selectedVariant].quantity}</h5></span>
+                                        <span>{t('addedCart.inwarehouse')}: <h5 className='productCount'>{viewProduct.productSizesAndQuantity[selectedVariant].quantity}</h5></span>
                                         <h2 className='price'>{viewProduct.productSizesAndQuantity[selectedVariant].price} <h4 className='sum'>CУМ</h4></h2>
                                         <div className="pathWay_info">
                                             {/* <BsRecordCircle /> <p className='info_category'></p> */}
@@ -92,7 +94,7 @@ function ProductView() {
                                         </div>
                                     </div>
                                     <div className='selectSize'>
-                                        <p>Ўлчам: </p>
+                                        <p>{t('addedCart.size')}: </p>
                                         <select id="select" onChange={(e) => {
                                             setSelectedVariant(+e.target.value)
                                             
@@ -107,7 +109,7 @@ function ProductView() {
                                 </div>
                                 <div className="productView_bottom">
                                         <div className="main_bottom">
-                                        <p>Сони: </p>
+                                        <p>{t('addedCart.many')}: </p>
                                         <div className="counterBtn">
                                             <div className="btn_group">
                                                 <button className='incr' onClick={decrement}>-</button>
@@ -117,11 +119,11 @@ function ProductView() {
                                         </div> 
                                         </div> 
                                         <div className="main_bottom">
-                                            <p>Умумий нархи: </p>
+                                            <p>{t('addedCart.totalPrice')}: </p>
                                             <button className='price_num'>{itemCounter * +dataProductView?.singleProduct[0].productSizesAndQuantity[selectedVariant].price}</button>
                                         </div>              
                                     <div className="main_bottom">
-                                     <button  onClick={() => addToCart(viewProduct)} className='cardshop_btn'><AiOutlineShoppingCart /> Саватга қўшиш</button>
+                                     <button  onClick={() => addToCart(viewProduct)} className='cardshop_btn'><AiOutlineShoppingCart /> {t('button.btn')}</button>
                                     </div> 
                                 </div>
                             </div>

@@ -5,12 +5,12 @@ const initialState = {
 export const langReducer =  (state = initialState, action) => {
     switch (action.type) {
 
-  case 'CHANGE_LANGUAGE':
-    return ({
-        lang: action.language_code
-    })
+    case 'CHANGE_LANGUAGE':
+      return ({
+          lang: action.language_code
+      })
 
-  default:
-    return state
+    default:
+      return state
   }
 }

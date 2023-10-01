@@ -4,15 +4,19 @@ import { MdMailOutline } from "react-icons/md"
 import { BiPhoneCall } from "react-icons/bi";
 import flaguz from "../../assests/flaguz.svg"
 import flagru from "../../assests/flaru.png"
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import i18n from '../language/i18next';
 import "./Nav.scss";
 import { useTranslation } from 'react-i18next';
+const exceptionalRoutes = ["/login", "/admin"]
+
 
 function Nav() {
+  const navLocation = useLocation()
   const dispatch = useDispatch()
   const { t } = useTranslation()
   const [ languageState, setLangugageState ] = useState(localStorage.getItem('lang') || 'uz')
+
 
   function changeLang (selectedLang){
     i18n.changeLanguage(selectedLang)
@@ -20,8 +24,11 @@ function Nav() {
     dispatch({language_code: selectedLang, type: 'CHANGE_LANGUAGE'})
   }
 
-  return (
-    <div className='navbar'>
+
+  return !exceptionalRoutes.includes(navLocation.pathname) ? (
+   <>
+     {/* <div className="opennav" onClick={() => setNavbarOpen(true)}>X</div> */}
+     <div className='navbar' >
         <div className="language_select">
            <img src={flaguz} alt="UZ" style={ languageState === "uz" ? {borderBottom: '3px solid dodgerblue'} : null }  onClick={() => changeLang('uz')}/>
             <img  src={flagru} alt="RU" style={ languageState === "ru" ? {borderBottom: '3px solid dodgerblue'} : null } onClick={() => changeLang('ru')}/>
@@ -35,7 +42,8 @@ function Nav() {
             </div>
         </div>
     </div>
-  )
+   </>
+  ) : <></>
 }
 
 export default Nav

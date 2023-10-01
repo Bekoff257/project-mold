@@ -5,10 +5,14 @@ import { Link } from "react-router-dom"
 import Sidebar from '../sidebar/Sidebar';
 import { useState, useEffect } from "react"
 import { instance } from '../api/axios';
+import { useLocation } from "react-router-dom";
 import notfound from "../assests/notfound.png"
 import { useTranslation } from "react-i18next";
 
+const exceptionalRoutes = ["/login", "/admin"]
+
 function SearchNav() {
+  const locationSearch = useLocation()
   const { t } = useTranslation()
   const [inputSearch, setInputSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -32,7 +36,7 @@ function SearchNav() {
     setInputSearch("")
   }
 
-  return (
+  return !exceptionalRoutes.includes(locationSearch.pathname) ? (
     <>
       <div className="nav_bottom">
         <div className='search_nav'>
@@ -93,7 +97,7 @@ function SearchNav() {
         </div>
       </div>
     </>
-  )
+  ) : <></>
 }
 
 export default SearchNav
