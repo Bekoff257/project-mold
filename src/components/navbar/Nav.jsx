@@ -8,7 +8,7 @@ import { Link, useLocation } from 'react-router-dom';
 import i18n from '../language/i18next';
 import "./Nav.scss";
 import { useTranslation } from 'react-i18next';
-const exceptionalRoutes = ["/login", "/admin"]
+const exceptionalRoutes = ["/login", "/admin", "/admin/orders", "/admin/create", "/admin/manage", "/admin/chart", "/admin/orders/all", "/admin/orders/not-contacted", "/admin/orders/contacted"]
 
 
 function Nav() {

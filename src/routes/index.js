@@ -12,6 +12,7 @@ import Orders from "./admin/orders/Orders"
 import Create from "./admin/create/Create"
 import Manage from "./admin/manage/Manage"
 import Chart from "./admin/chart/Chart"
+import OrderDetails from './order-details/OrderDetails';
 
 
 
@@ -27,10 +28,12 @@ const Routers = () => {
         <Route path="/login" element={<Login />}/>
         <Route path='/' element={<Private/>}>
           <Route path='/admin' element={<Admin/>}>
-            <Route path='/admin/orders/all' element={<Orders />}/>
-            <Route path='/admin/manage' element={<Manage />}/>
-            <Route path='/admin/create' element={<Create />}/>
-            <Route path='/admin/chart' element={<Chart />}/>
+            <Route path="/admin/orders" element={<Orders />}>
+              <Route path='/admin/orders/:status' element={<OrderDetails />}/> 
+            </Route>
+            <Route path="/admin/create" element={<Create />}/>
+            <Route path="/admin/manage" element={<Manage />}/>
+            <Route path="/admin/chart" element={<Chart />}/>
           </Route>
         </Route>
     </Routes>

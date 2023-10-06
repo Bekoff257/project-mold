@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import notfound from "../assests/notfound.png"
 import { useTranslation } from "react-i18next";
 
-const exceptionalRoutes = ["/login", "/admin"]
+const exceptionalRoutes = ["/login", "/admin", "/admin/orders", "/admin/manage", "/admin/create", "/admin/chart", "/admin/orders/not-contacted", "/admin/orders/contacted", "/admin/orders/all"];
 
 function SearchNav() {
   const locationSearch = useLocation()
@@ -46,7 +46,7 @@ function SearchNav() {
             </div>
             <form className="search_input" onClick={resetFrom}>
               <input type="text" placeholder={t('subnavbar.search')} value={inputSearch} onChange={e => setInputSearch(e.target.value)} />
-              <button type='submit'><FiSearch /></button>
+              <button className="submit-btn" type='submit'><FiSearch /></button>
               {searchResult.length > 0  || inputSearch.length != 0 ? <div className="search_results">
                 <div className="searched_result">
                   <div className="sr_first">
@@ -77,7 +77,7 @@ function SearchNav() {
           </div>
         </div>
         <div className="pages_nav">
-          <Sidebar />
+          <Sidebar/>
           <div className="links">
             <ul className='link_main'>
               <li>

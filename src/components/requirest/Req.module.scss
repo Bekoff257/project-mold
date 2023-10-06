@@ -12,7 +12,7 @@
 
 
         .advice_services{
-            flex-wrap: wrap;
+            // flex-wrap: wrap;
             height: auto;
             margin-top: 60px;
             padding: 80px 30px;
@@ -22,9 +22,9 @@
             justify-content: space-between;
 
             .service{
-                display: flex;
-                align-items: center;
-                gap: 40px;
+                // display: flex;
+                // align-items: center;
+                // gap: 40px;
 
                 .about_service{
                     display: flex;
@@ -55,13 +55,20 @@
 @media only screen and (max-width: 420px){
 
     
-    .advice_services{
-        flex-direction: column;
-        width: 100%;
+    .reqs{
+
+        .advice{
+            
+            .advice_services{
+                padding: 30px;
+                flex-direction: column;
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+        }
     }
 
     .about_service{
-
 
     }
 }

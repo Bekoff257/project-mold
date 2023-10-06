@@ -166,7 +166,9 @@
             padding-top: 20px;
 
             .btn_group{
+                width: 100%;
                 align-items: center;
+                justify-content: space-between;
                 display: flex;
                 gap: 30px;
                 padding: 10px;
@@ -202,6 +204,7 @@
 }
 
 .main_bottom{
+    width: 100%;
 
 
     .price_num{
@@ -231,5 +234,75 @@
         display: flex;
         align-items: center;
         gap: 10px;
+    }
+}
+
+
+@media only screen and (max-width: 460px){
+    .product-view{
+        flex-direction: column;
+    }
+
+    .productView_header{
+        flex-direction: column;
+
+        .productView_left{
+
+            .main_img{
+                width: 419px;
+                height: 412px;
+            }
+        }
+
+        .productView_right{
+
+            .path_way{
+                padding-top: 20px;
+                flex-direction: column;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .countOfProduct{
+        flex-direction: column;
+
+        .selectSize{
+            padding-top: 20px;
+        }
+    }
+
+    .sizeOf_Product .pathWay_info{
+        padding-top: 20px;
+        font-size: 17px;
+    }
+
+    .productView_right .productView_bottom{
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .main_bottom{
+        padding-top: 20px;
+        width: 100%;
+
+        .counterBtn{
+            width: 100%;
+        }
+    }
+    .productView_right .productView_bottom .counterBtn .btn_group{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .productView_left .image_group {
+        width: 370px;
+        overflow-y: auto;
+    }
+
+    .productView_header .productView_right h1 {
+        font-size: 30px;
     }
 }

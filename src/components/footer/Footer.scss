@@ -97,54 +97,54 @@
                 }
             }
         }
+    }
+}
 
-        .about-and_reports_section{
-            display: flex;
-            gap: 0 65px;
+.about-and_reports_section{
+    display: flex;
+    gap: 0 65px;
 
-            .working_links{
-                h2{
-                    font-size: 30px;
-                    font-weight: 600;
-                    color: #fff;
-                }
+    .working_links{
+        h2{
+            font-size: 30px;
+            font-weight: 600;
+            color: #fff;
+        }
 
-                .link_main{
-                    padding-top: 35px;
-                    list-style-type: none;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    grid-gap: 60px 70px;
+        .link_main{
+            padding-top: 35px;
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 60px 70px;
 
-                    .link_list{
+            .link_list{
 
-                        a{
-                            color: #fff;
-                            font-size: 17px;
-                            line-height: 30px;
-                            opacity: .7;
-                            text-decoration: none;
-                        }
-                    }
-                }
-            }
-
-            .for_clients{
-
-                h2{
-                    font-size: 30px;
-                    font-weight: 600;
-                    color: #fff;
-                }
-
-                p{
+                a{
                     color: #fff;
                     font-size: 17px;
                     line-height: 30px;
-                    padding-top: 30px;
                     opacity: .7;
+                    text-decoration: none;
                 }
             }
+        }
+    }
+
+    .for_clients{
+
+        h2{
+            font-size: 30px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        p{
+            color: #fff;
+            font-size: 17px;
+            line-height: 30px;
+            padding-top: 30px;
+            opacity: .7;
         }
     }
 }
@@ -153,4 +153,37 @@
     padding-top: 8px;
     border-bottom: 3px solid #fff;
     width: 90px;
+}
+
+@media only screen and (max-width: 460px){
+
+    .Footer{
+        padding: 0 15px;
+    }
+
+    .about_main{
+        flex-wrap: wrap;
+    }
+
+    .social_section{
+        flex-direction: column;
+    }
+
+    .about-and_reports_section{
+        flex-direction: column;
+    }
+
+    .about-and_reports_section{
+
+        .working_links{
+
+            .link_main{
+                grid-gap: 21px;
+            }
+        }
+    }
+
+    .for_clients{
+        padding-top: 30px;
+    }
 }

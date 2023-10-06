@@ -8,7 +8,7 @@ import logo from "../../assests/logo.svg"
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const exceptionalRoutes = ["/login", "/admin"]
+const exceptionalRoutes = ["/login", "/admin", "/admin/orders", "/admin/manage", "/admin/profile", "/admin/chart", "/admin/create", "/admin/orders/all", "/admin/orders/not-contacted", "/admin/orders/contacted"]
 
 
 function Footer() {

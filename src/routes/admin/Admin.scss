@@ -1,8 +1,10 @@
 .admin{
+    display: flex;
+    gap: 0 40px;
 
     .admin_sidebar{
-        position: fixed;
-        background-color: dodgerblue;
+        // position: fixed;
+        background-color: #4361ee;
         border-radius: 15px;
         padding: 0 15px;
         height: 90vh;
@@ -111,8 +113,4 @@
             }
         }
     }
-}
-
-.active{
-    background: #fff;
 }

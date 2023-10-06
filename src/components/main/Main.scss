@@ -3,6 +3,12 @@
   margin: 0px auto;
 }
 
+@media only screen and (max-width: 460px){
+  .home__product-carousel{
+    margin-top: -80%;
+  }
+}
+
 .home__product-carousel > h2{
   margin-top: 40px;
   font-size: 30px;

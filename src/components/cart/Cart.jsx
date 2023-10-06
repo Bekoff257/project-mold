@@ -9,7 +9,7 @@ import notfoundbox from '../../assests/notfoundbox.png';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
-const exceptionalRoutes = ["/product-view", "/login", "/admin"]
+const exceptionalRoutes = ["/product-view", "/login", "/admin", "/admin/orders", "/admin/create", "/admin/manage", "/admin/chart", "/admin/orders/all", "/admin/orders/not-contacted", "/admin/orders/contacted"]
 
 
 function Cart() {

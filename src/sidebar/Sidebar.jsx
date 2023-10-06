@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
 import  React  from "react"
 import { useLocation } from 'react-router-dom'
-const exceptionalRoutes = ["/login", "/admin", "/about", "/partners", "/contact"]
+const exceptionalRoutes = ["/login", "/admin", "/about", "/partners", "/contact", "/admin/orders"]
 
 const Sidebar = () => {
   const currentLang = useSelector(state => state.language.lang)
@@ -17,7 +17,9 @@ const Sidebar = () => {
   const [ dataCategory, setDataCategory ] = useState([])
 
   useEffect(() => {
+
     let dataFetched = false
+    
 
     instance("/category/category-nest")
       .then(response => setDataCategory(response.data))
@@ -32,7 +34,7 @@ const Sidebar = () => {
 
   console.log(dataCategory);
 
-  return !exceptionalRoutes.includes(locationSidebar.pathname)  ? (
+  return exceptionalRoutes.includes(locationSidebar.pathname)  ? (
     <div className='sidebar' style={{ display: locationSidebar.pathname.includes('/product-view') ? 'none' : 'block' }}>
         <p className='aside__header'><AiOutlineAppstore /> Category</p>
         <ul className='category_main'>
